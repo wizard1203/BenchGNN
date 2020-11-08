@@ -1,0 +1,21 @@
+## ginore this file ##
+*.pth
+*.log
+*.pyc
+*.swp
+*.swo
+*.pfm
+*_local.sh
+*gpus
+*hosts
+tmp
+data/
+logs/
+weights
+.nfs*
+runs
+*.ipynb
+*.npy
+bk/
+*.npy*
+settings_dev.py
