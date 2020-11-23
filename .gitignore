@@ -19,3 +19,9 @@ runs
 bk/
 *.npy*
 settings_dev.py
+*csv
+*gz
+*tsv
+*docx
+processed*
+raw*

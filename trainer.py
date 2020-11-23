@@ -6,7 +6,7 @@ import torch.nn.functional as F
 
 
 
-import gnn_creater as gnn
+from model_prepare as model_prepare
 from data_prepare import data_prepare
 
 

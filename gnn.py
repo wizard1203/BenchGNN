@@ -9,12 +9,14 @@ import torch.nn.functional as F
 from dgl.nn.pytorch import GraphConv
 
 
+from gnn import GNN
+
 
 def gnn_create(model_name):
     G = GCN(5, 5, 2)
     return G
 
-
+# dgl implementation
 class GCN(nn.Module):
     def __init__(self, in_feats, hidden_size, num_classes):
         super(GCN, self).__init__()
@@ -26,6 +28,11 @@ class GCN(nn.Module):
         h = torch.relu(h)
         h = self.conv2(g, h)
         return h
+
+
+
+
+
 
 
 
