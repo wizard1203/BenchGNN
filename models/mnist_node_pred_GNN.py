@@ -1,21 +1,21 @@
 import torch
 import torch.nn.functional as F
 from torch_geometric.nn import global_mean_pool, global_add_pool
-
+from torch_geometric.utils import add_self_loops, degree
 from torch_geometric.nn.conv import GCNConv
 
 
 
-class mnist_node_pred_GNN(torch.nn.Module):
+class Mnist_node_pred_GNN(torch.nn.Module):
     def __init__(self, in_feats, hidden_sizes: list, drop_ratio=0.5, gnn_type=None):
-        super(mnist_node_pred_GNN, self).__init__()
+        super(Mnist_node_pred_GNN, self).__init__()
 
         self.in_feats = in_feats
         self.hidden_sizes = hidden_sizes
         self.conv_list = []
-        self.conv_list.append(GCNConv(in_feats, hidden_sizes[0]))
+        self.conv_list.append(GCNConv(in_feats, hidden_sizes[0]).cuda())
         for i in range(1, len(hidden_sizes)):
-            self.conv_list.append(GCNConv(hidden_sizes[i-1], hidden_sizes[i]))
+            self.conv_list.append(GCNConv(hidden_sizes[i-1], hidden_sizes[i]).cuda())
 
         self.classifier = self.get_classifier()
 
@@ -31,14 +31,21 @@ class mnist_node_pred_GNN(torch.nn.Module):
     #     h = self.conv2(g, h)
     #     return h
 
-    def forward(self, batched_data):
-        x, edge_index, edge_attr, batch = \
-            batched_data.x, batched_data.edge_index, batched_data.edge_attr, batched_data.batch
+    # def forward(self, batched_data):
+    def forward(self, x, edge_index):
+        # x, edge_index, edge_attr, batch = \
+        #     batched_data.x, batched_data.edge_index, batched_data.edge_attr, batched_data.batch
 
         print("x.shape:", x.shape)
         x = x.reshape([-1, 784])
+        print(x[5])
         for conv in self.conv_list:
+
+            print("x.device:", x.device)
+            print("conv.device:", next(conv.parameters()).device)
+            print("self.device:", next(self.parameters()).device)
             x = conv(x, edge_index)
+            print(x)
             x = F.relu(x)
             x = F.dropout(x, training=self.training)
 

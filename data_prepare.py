@@ -71,17 +71,17 @@ class Mnist_node_pred_GNN_dataset(InMemoryDataset):
         self.data_dir = root
         self.processed_paths[0] = 'Mnist_node_pred.pt'
         self.transform = transform
-        self.train_dataset = torchvision.datasets.MNIST(data_dir, train=True, download=True, transform=transforms.Compose([
+        self.train_dataset = torchvision.datasets.MNIST(self.data_dir, train=True, download=True, transform=transforms.Compose([
                         transforms.ToTensor(),
                         transforms.Normalize((0.1307,), (0.3081,))
                         ]))
         # self.data_file = 'train_Mnist_graph_pred.pt'
 
-        self.test_dataset = torchvision.datasets.MNIST(data_dir, train=False, transform=transforms.Compose([
+        self.test_dataset = torchvision.datasets.MNIST(self.data_dir, train=False, transform=transforms.Compose([
                     transforms.ToTensor(),
                     transforms.Normalize((0.1307,), (0.3081,))
                     ]))
-        super(Mnist_node_pred_GNN_dataset, self).__init__(data_dir, transform, pre_transform)
+        super(Mnist_node_pred_GNN_dataset, self).__init__(self.data_dir, transform, pre_transform)
         path = self.processed_paths[0]
         self.data = torch.load(path)
 
@@ -106,7 +106,10 @@ class Mnist_node_pred_GNN_dataset(InMemoryDataset):
     def process_set(self):
         self.split_train = np.random.choice(60000, 6000)
         self.split_test = np.random.choice(10000, 1000)
-
+        random_list = list(range(0, 7000))
+        np.random.shuffle(random_list)
+        self.train_mask = random_list[0:6000]
+        self.test_mask = random_list[6000:7000]
         # self.origin_dataset = self.train_dataset + self.test_dataset
         # self.test_file = 'test_Mnist_graph_pred.pt'
         # num_nodes = self.origin_dataset[0].shape[0] * self.origin_dataset[0].shape[0]
@@ -138,6 +141,8 @@ class Mnist_node_pred_GNN_dataset(InMemoryDataset):
             imgs = torch.cat((imgs, img))
             labels = torch.cat((labels, torch.Tensor(label)))
 
+        data.train_mask = self.train_mask
+        data.test_mask = self.test_mask
         data.x = imgs
         data.y = labels
 
