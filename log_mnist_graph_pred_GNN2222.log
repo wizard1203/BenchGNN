@@ -1,0 +1,82 @@
+2020-11-27 14:19:03,511 [trainer.py:86] INFO Base_lr: 0.1000
+2020-11-27 14:19:35,499 [trainer.py:495] INFO Train Epoch 0 | Loss: 0.0529 | acc: 0.1110
+2020-11-27 14:19:35,499 [trainer.py:496] INFO Test Epoch 0 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:20:07,278 [trainer.py:495] INFO Train Epoch 1 | Loss: 0.0470 | acc: 0.0994
+2020-11-27 14:20:07,279 [trainer.py:496] INFO Test Epoch 1 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:20:50,557 [trainer.py:86] INFO Base_lr: 0.1000
+2020-11-27 14:21:22,656 [trainer.py:495] INFO Train Epoch 0 | Loss: 0.0465 | acc: 0.0992
+2020-11-27 14:21:22,656 [trainer.py:496] INFO Test Epoch 0 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:21:54,274 [trainer.py:495] INFO Train Epoch 1 | Loss: 0.0466 | acc: 0.0992
+2020-11-27 14:21:54,274 [trainer.py:496] INFO Test Epoch 1 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:22:25,975 [trainer.py:495] INFO Train Epoch 2 | Loss: 0.0466 | acc: 0.0996
+2020-11-27 14:22:25,975 [trainer.py:496] INFO Test Epoch 2 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:22:47,604 [trainer.py:86] INFO Base_lr: 0.1000
+2020-11-27 14:23:18,863 [trainer.py:495] INFO Train Epoch 0 | Loss: 0.0465 | acc: 0.0996
+2020-11-27 14:23:18,864 [trainer.py:496] INFO Test Epoch 0 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:23:49,845 [trainer.py:495] INFO Train Epoch 1 | Loss: 0.0466 | acc: 0.0992
+2020-11-27 14:23:49,845 [trainer.py:496] INFO Test Epoch 1 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:24:20,597 [trainer.py:495] INFO Train Epoch 2 | Loss: 0.0466 | acc: 0.0996
+2020-11-27 14:24:20,597 [trainer.py:496] INFO Test Epoch 2 | Loss: 0.0465 | acc: 0.1009
+2020-11-27 14:24:51,576 [trainer.py:495] INFO Train Epoch 3 | Loss: 0.0466 | acc: 0.0997
+2020-11-27 14:24:51,577 [trainer.py:496] INFO Test Epoch 3 | Loss: 0.0465 | acc: 0.0958
+2020-11-27 14:25:04,493 [trainer.py:86] INFO Base_lr: 0.1000
+2020-11-27 14:25:49,610 [trainer.py:86] INFO Base_lr: 0.0100
+2020-11-27 14:26:28,420 [trainer.py:495] INFO Train Epoch 0 | Loss: 0.0642 | acc: 0.3600
+2020-11-27 14:26:28,421 [trainer.py:496] INFO Test Epoch 0 | Loss: 0.0852 | acc: 0.1135
+2020-11-27 14:28:00,603 [trainer.py:495] INFO Train Epoch 1 | Loss: 0.0703 | acc: 0.3708
+2020-11-27 14:28:00,603 [trainer.py:496] INFO Test Epoch 1 | Loss: 0.0994 | acc: 0.1135
+2020-11-27 14:28:39,531 [trainer.py:495] INFO Train Epoch 2 | Loss: 0.0697 | acc: 0.3740
+2020-11-27 14:28:39,532 [trainer.py:496] INFO Test Epoch 2 | Loss: 0.1059 | acc: 0.1135
+2020-11-27 14:28:50,638 [trainer.py:88] INFO Base_lr: 0.0010
+2020-11-27 14:29:27,402 [trainer.py:497] INFO Train Epoch 0 | Loss: 0.0464 | acc: 0.1145
+2020-11-27 14:29:27,402 [trainer.py:498] INFO Test Epoch 0 | Loss: 0.0460 | acc: 0.1135
+2020-11-27 14:30:04,360 [trainer.py:497] INFO Train Epoch 1 | Loss: 0.0465 | acc: 0.1193
+2020-11-27 14:30:04,360 [trainer.py:498] INFO Test Epoch 1 | Loss: 0.0461 | acc: 0.1135
+2020-11-27 14:30:41,151 [trainer.py:497] INFO Train Epoch 2 | Loss: 0.0466 | acc: 0.1149
+2020-11-27 14:30:41,151 [trainer.py:498] INFO Test Epoch 2 | Loss: 0.0461 | acc: 0.1135
+2020-11-27 14:30:50,399 [trainer.py:88] INFO Base_lr: 0.0010
+2020-11-27 14:31:26,220 [trainer.py:88] INFO Base_lr: 0.0100
+2020-11-27 14:31:57,111 [trainer.py:497] INFO Train Epoch 0 | Loss: 0.0461 | acc: 0.1067
+2020-11-27 14:31:57,111 [trainer.py:498] INFO Test Epoch 0 | Loss: 0.0460 | acc: 0.1028
+2020-11-27 14:32:27,652 [trainer.py:497] INFO Train Epoch 1 | Loss: 0.0461 | acc: 0.1059
+2020-11-27 14:32:27,653 [trainer.py:498] INFO Test Epoch 1 | Loss: 0.0460 | acc: 0.1028
+2020-11-27 14:32:58,217 [trainer.py:497] INFO Train Epoch 2 | Loss: 0.0461 | acc: 0.1057
+2020-11-27 14:32:58,217 [trainer.py:498] INFO Test Epoch 2 | Loss: 0.0460 | acc: 0.1028
+2020-11-27 14:33:28,797 [trainer.py:497] INFO Train Epoch 3 | Loss: 0.0461 | acc: 0.1060
+2020-11-27 14:33:28,798 [trainer.py:498] INFO Test Epoch 3 | Loss: 0.0460 | acc: 0.1028
+2020-11-27 14:33:59,505 [trainer.py:497] INFO Train Epoch 4 | Loss: 0.0461 | acc: 0.1061
+2020-11-27 14:33:59,505 [trainer.py:498] INFO Test Epoch 4 | Loss: 0.0460 | acc: 0.1028
+2020-11-27 14:34:30,755 [trainer.py:88] INFO Base_lr: 0.0100
+2020-11-27 14:35:01,398 [trainer.py:497] INFO Train Epoch 0 | Loss: 0.9790 | acc: 0.3750
+2020-11-27 14:35:01,399 [trainer.py:498] INFO Test Epoch 0 | Loss: 0.1117 | acc: 0.8286
+2020-11-27 14:35:31,800 [trainer.py:497] INFO Train Epoch 1 | Loss: 1.1895 | acc: 0.3948
+2020-11-27 14:35:31,800 [trainer.py:498] INFO Test Epoch 1 | Loss: 0.1078 | acc: 0.8260
+2020-11-27 14:36:02,228 [trainer.py:497] INFO Train Epoch 2 | Loss: 1.1604 | acc: 0.3963
+2020-11-27 14:36:02,228 [trainer.py:498] INFO Test Epoch 2 | Loss: 0.0993 | acc: 0.8416
+2020-11-27 14:36:33,050 [trainer.py:497] INFO Train Epoch 3 | Loss: 1.1717 | acc: 0.3948
+2020-11-27 14:36:33,051 [trainer.py:498] INFO Test Epoch 3 | Loss: 0.0992 | acc: 0.8301
+2020-11-27 14:37:30,415 [trainer.py:88] INFO Base_lr: 0.0010
+2020-11-27 14:38:01,013 [trainer.py:497] INFO Train Epoch 0 | Loss: 0.0339 | acc: 0.5697
+2020-11-27 14:38:01,013 [trainer.py:498] INFO Test Epoch 0 | Loss: 0.0096 | acc: 0.8496
+2020-11-27 14:38:31,310 [trainer.py:497] INFO Train Epoch 1 | Loss: 0.0353 | acc: 0.5753
+2020-11-27 14:38:31,311 [trainer.py:498] INFO Test Epoch 1 | Loss: 0.0098 | acc: 0.8462
+2020-11-27 14:39:06,945 [trainer.py:89] INFO Base_lr: 0.0005
+2020-11-27 14:39:37,658 [trainer.py:498] INFO Train Epoch 0 | Loss: 0.0721 | acc: 0.1256
+2020-11-27 14:39:37,658 [trainer.py:499] INFO Test Epoch 0 | Loss: 0.0454 | acc: 0.1135
+2020-11-27 14:40:08,052 [trainer.py:498] INFO Train Epoch 1 | Loss: 0.0758 | acc: 0.1269
+2020-11-27 14:40:08,052 [trainer.py:499] INFO Test Epoch 1 | Loss: 0.0456 | acc: 0.1135
+2020-11-27 14:40:31,499 [trainer.py:89] INFO Base_lr: 0.0001
+2020-11-27 14:41:02,094 [trainer.py:498] INFO Train Epoch 0 | Loss: 0.0514 | acc: 0.1283
+2020-11-27 14:41:02,094 [trainer.py:499] INFO Test Epoch 0 | Loss: 0.0451 | acc: 0.1856
+2020-11-27 14:41:32,495 [trainer.py:498] INFO Train Epoch 1 | Loss: 0.0498 | acc: 0.1398
+2020-11-27 14:41:32,496 [trainer.py:499] INFO Test Epoch 1 | Loss: 0.0452 | acc: 0.1671
+2020-11-27 14:42:02,777 [trainer.py:498] INFO Train Epoch 2 | Loss: 0.0498 | acc: 0.1394
+2020-11-27 14:42:02,778 [trainer.py:499] INFO Test Epoch 2 | Loss: 0.0453 | acc: 0.1236
+2020-11-27 14:42:33,029 [trainer.py:498] INFO Train Epoch 3 | Loss: 0.0498 | acc: 0.1393
+2020-11-27 14:42:33,029 [trainer.py:499] INFO Test Epoch 3 | Loss: 0.0452 | acc: 0.1453
+2020-11-27 14:43:03,343 [trainer.py:498] INFO Train Epoch 4 | Loss: 0.0497 | acc: 0.1407
+2020-11-27 14:43:03,344 [trainer.py:499] INFO Test Epoch 4 | Loss: 0.0452 | acc: 0.1359
+2020-11-27 14:43:33,754 [trainer.py:498] INFO Train Epoch 5 | Loss: 0.0496 | acc: 0.1393
+2020-11-27 14:43:33,755 [trainer.py:499] INFO Test Epoch 5 | Loss: 0.0452 | acc: 0.1237
+2020-11-27 14:44:04,137 [trainer.py:498] INFO Train Epoch 6 | Loss: 0.0496 | acc: 0.1389
+2020-11-27 14:44:04,137 [trainer.py:499] INFO Test Epoch 6 | Loss: 0.0453 | acc: 0.1147

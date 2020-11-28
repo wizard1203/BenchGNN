@@ -1,6 +1,6 @@
 ## ginore this file ##
+# *.log
 *.pth
-*.log
 *.pyc
 *.swp
 *.swo
@@ -14,7 +14,6 @@ logs/
 weights
 .nfs*
 runs
-*.ipynb
 *.npy
 bk/
 *.npy*

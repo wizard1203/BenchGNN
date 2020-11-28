@@ -9,6 +9,7 @@ from data_prepare import dataset_prepare
 from trainer import Trainer
 
 
+# Not used
 def dgl_test():
     # Since the actual graph is undirected, we convert it for visualization
     # purpose.
@@ -23,37 +24,41 @@ def dgl_test():
     inputs, labeled_nodes, labels = data_prepare()
     # trainer.train(G, inputs, labeled_nodes, labels)
 
+    # nx.draw(nx_G, pos, with_labels=True, node_color=[[.7, .7, .7]])
+    # plt.show()
+
 if __name__ == '__main__':
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # train_loader, test_loader = dataset_prepare('mnist_graph_pred_GNN_prepare', data_dir='.')
+    # trainer = Trainer(model_name='mnist_graph_pred_GNN', optim_name=None, criterion=None,
+    #         train_loader=train_loader, test_loader=test_loader)
+    # trainer.train()
 
-    # train_loader, test_loader = dataset_prepare('mnist_graph_pred_GNN_prepare')
-    # trainer = Trainer(model_name='mnist_graph_pred_GNN', optim_name=None, criterion='nll_loss')
-    # trainer.train( inputs, labeled_nodes, labels)
+    # mnist_node_pred_GNN_dataset = dataset_prepare('mnist_node_pred_GNN_prepare', data_dir='.')
+    # trainer = Trainer(model_name='mnist_node_pred_GNN', optim_name=None, criterion=None,
+    #         train_loader=mnist_node_pred_GNN_dataset.data, test_loader=None)
+    # trainer.train()
 
-    mnist_node_pred_GNN_dataset = dataset_prepare('mnist_node_pred_GNN_prepare', data_dir='.')
-    trainer = Trainer(model_name='mnist_node_pred_GNN', optim_name=None, criterion='nll_loss')
-    trainer.train_with_one_sample(mnist_node_pred_GNN_dataset.data)
+    # train_loader, test_loader = dataset_prepare('mol_pred_DNN_prepare', data_dir='.')
+    # trainer = Trainer(model_name='mol_pred_DNN', optim_name=None, criterion=None,
+    #         train_loader=train_loader, test_loader=test_loader)
+    # trainer.train()
 
-    # train_loader, test_loader = dataset_prepare('mnist_CNN_prepare')
-    # trainer = Trainer(model_name='mnist_CNN', optim_name=None, criterion='nll_loss')
-    # trainer.train( inputs, labeled_nodes, labels)
+    train_loader, test_loader = dataset_prepare('mol_pred_GNN_prepare', data_dir='.')
+    trainer = Trainer(model_name='mol_pred_GNN', optim_name=None, criterion=None,
+            train_loader=train_loader, test_loader=test_loader)
+    trainer.train()
 
-    # train_loader, valid_loader, test_loader = dataset_prepare('molhiv_GNN_prepare')
-    # trainer = Trainer(model_name=None, optim_name=None, criterion='nll_loss')
-    # trainer.train( inputs, labeled_nodes, labels)
-
-    # train_loader, valid_loader, test_loader = dataset_prepare('molhiv_DNN_prepare')
-    # trainer = Trainer(model_name=None, optim_name=None, criterion='nll_loss')
-    # trainer.train( inputs, labeled_nodes, labels)
-
+    # train_loader, test_loader = dataset_prepare('mnist_CNN_prepare', data_dir='.')
+    # trainer = Trainer(model_name='mnist_CNN', optim_name=None, criterion=None,
+    #         train_loader=train_loader, test_loader=test_loader)
+    # trainer.train()
 
 
 
  
 
-    # nx.draw(nx_G, pos, with_labels=True, node_color=[[.7, .7, .7]])
-    # plt.show()
+
 
 
 

@@ -21,13 +21,15 @@ class Mnist_graph_pred_GNN(torch.nn.Module):
         # Maybe use fc is a little tricky
         # self.fc1 = nn.Linear(784, 128)
         # self.fc2 = nn.Linear(128, 10)
+
+        self.lin1 = nn.Linear(784, 128)
         self.classifier = self.get_classifier()
 
 
     def get_classifier(self):
         # 10 classes of numbers
-        return nn.Linear(784, 10)
-
+        return nn.Linear(128, 10)
+        #return nn.Linear(784, 10)
 
     # def forward(self, data):
     #     h = self.conv1(g, inputs)
@@ -42,12 +44,16 @@ class Mnist_graph_pred_GNN(torch.nn.Module):
 
         for conv in self.conv_list:
             x = conv(x, edge_index)
-            x = F.relu(x)
+            # x = F.relu(x)
             x = F.dropout(x, training=self.training)
-
+        # print("x.shape:", x.shape)
+        x = x.reshape([-1, 784])
+        x = self.lin1(x)
+        x = F.relu(x)
+        x = F.dropout(x, training=self.training)
         x = self.classifier(x)
 
-        print("x.shape:", x.shape)
+        # print("x.shape:", x.shape)
         output = F.log_softmax(x, dim=1)
         return output
 

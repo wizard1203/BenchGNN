@@ -19,7 +19,7 @@ import torch_geometric.utils.convert as convert
 # from ogb.nodeproppred import DglNodePropPredDataset, Evaluator
 from ogb.graphproppred import PygGraphPropPredDataset, Evaluator
 
-batch_size = 10
+batch_size = 50
 # dataset = "ogbn-arxiv"
 # n_node_feats, n_classes = 0, 0
 # global n_node_feats, n_classes
@@ -47,8 +47,17 @@ def data_prepare11111111():
     return inputs, labeled_nodes, labels
 
 
+def mol_pred_DNN_prepare(batch_size=50):
 
-def molhiv_prepare(batch_size=10):
+    mol_pred_DNN_dataset_train = Mol_pred_DNN_dataset(train=True)
+    mol_pred_DNN_dataset_test = Mol_pred_DNN_dataset(train=False)
+
+    train_loader = torch.utils.data.DataLoader(mol_pred_DNN_dataset_train, batch_size=batch_size)
+    test_loader = torch.utils.data.DataLoader(mol_pred_DNN_dataset_test, batch_size=batch_size)
+    return train_loader, test_loader
+
+
+def mol_pred_GNN_prepare(batch_size=50):
     dataset_name = 'ogbg-molhiv'
 
     dataset = PygGraphPropPredDataset(name=dataset_name)
@@ -58,12 +67,50 @@ def molhiv_prepare(batch_size=10):
     train_loader = DataLoader(dataset[split_idx["train"]], batch_size=batch_size, shuffle=True)
     valid_loader = DataLoader(dataset[split_idx["valid"]], batch_size=batch_size, shuffle=False)
     test_loader = DataLoader(dataset[split_idx["test"]], batch_size=batch_size, shuffle=False)
-    return train_loader, valid_loader, test_loader
+    return train_loader, test_loader
 
 
 def matrix2nodeid(i, j, dim):
     index_i = i*dim + j
     return 0
+
+
+class Mol_pred_DNN_dataset(torch.utils.data.Dataset):
+    def __init__(self, train):
+        super(Mol_pred_DNN_dataset, self).__init__()
+        self.train = train
+        dataset_name = 'ogbg-molhiv'
+        mol_origin_dataset = PygGraphPropPredDataset(name=dataset_name)
+        evaluator = Evaluator(name=dataset_name)
+        split_idx = mol_origin_dataset.get_idx_split()
+        if self.train == True:
+            self.mol_origin_dataset = mol_origin_dataset[split_idx["train"]]
+        else:
+            self.mol_origin_dataset = mol_origin_dataset[split_idx["test"]]
+
+
+    def __getitem__(self, idx):
+        edge_attr = self.mol_origin_dataset[idx].edge_attr
+        x = self.mol_origin_dataset[idx].x
+        y = self.mol_origin_dataset[idx].y
+
+        x = x.reshape(-1)
+        x = torch.cat((x, torch.zeros(222*9 - len(x)).long()))
+
+        edge_attr = edge_attr.reshape(-1)
+        edge_attr = torch.cat((edge_attr, torch.zeros(502*3 - len(edge_attr)).long()))
+        
+        # data = (x, edge_attr)
+        data = torch.cat((x, edge_attr))
+        y = y.reshape(-1)
+        return data, y
+        # return x, edge_attr, y
+
+    def __len__(self):
+        return len(self.mol_origin_dataset)
+
+
+
 
 class Mnist_node_pred_GNN_dataset(InMemoryDataset):
     def __init__(self, root, transform=None, pre_transform=None):
@@ -118,7 +165,7 @@ class Mnist_node_pred_GNN_dataset(InMemoryDataset):
         node_list = [i for i in range(num_nodes)]
         edge_list = []
         for i in range(num_nodes):
-            neighbor_i = np.random.choice(7000, 10)
+            neighbor_i = np.random.choice(7000, 100)
             edge_i = [(i, idx) for idx in neighbor_i]
             edge_list += (edge_i)
 
@@ -136,10 +183,12 @@ class Mnist_node_pred_GNN_dataset(InMemoryDataset):
             else:
                 idx = i-6000
                 (img, label) = self.test_dataset[self.split_test[idx]]
+            print("label:", label)
             print("Processing %d-th Image" % (i))
             img = img.reshape([1, 28, 28])
             imgs = torch.cat((imgs, img))
-            labels = torch.cat((labels, torch.Tensor(label)))
+            labels = torch.cat((labels, torch.Tensor([label])))
+        print(labels[0:5])
 
         data.train_mask = self.train_mask
         data.test_mask = self.test_mask
@@ -327,14 +376,12 @@ def dataset_prepare(dataset_name, data_dir):
     elif dataset_name == 'mnist_CNN_prepare':
         train_loader, test_loader = \
             mnist_CNN_prepare(data_dir, batch_size)
-
-    # TODO
-    elif dataset_name == 'molhiv_GNN_prepare':
-        train_loader, valid_loader, test_loader = \
-            molhiv_GNN_prepare(batch_size)
-    elif dataset_name == 'molhiv_DNN_prepare':
-        train_loader, valid_loader, test_loader = \
-            molhiv_DNN_prepare(batch_size)
+    elif dataset_name == 'mol_pred_DNN_prepare':
+        train_loader, test_loader = \
+            mol_pred_DNN_prepare(batch_size)
+    elif dataset_name == 'mol_pred_GNN_prepare':
+        train_loader, test_loader = \
+            mol_pred_GNN_prepare(batch_size)
     else:
         raise NotImplementedError("Not implemented!")
 
@@ -345,7 +392,6 @@ if __name__ == '__main__':
     # dataset_name = 'mnist_graph_pred_GNN_prepare'
     dataset_name = 'mnist_node_pred_GNN_prepare'
     # dataset_name = 'mnist_CNN_prepare'
-    # dataset_name = 'molhiv'
 
     data_dir = '.'
 
