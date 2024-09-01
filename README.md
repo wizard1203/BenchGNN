@@ -8,5 +8,11 @@ Run experiments:
 python main.py
 ```
 
-For MNIST dataset preparing, it may take some time.
+For MNIST dataset, it may take some time to prepare.
+
+And the experiment results are saved in log* files. You can run
+```
+python draw.py
+```
+to get figures of experiment results.
 
